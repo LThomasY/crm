@@ -62,3 +62,12 @@ def add_active(request):
 #<p class="alert alert-danger">
 #{{ msg }}
 #</p>
+def edit_active(request,id):
+	if request.method == 'GET':
+		active = Activelist.objects.get(id=id)
+		pro_m = Project.objects.all()
+		cli_m = Client.objects.all()
+#		print active,"++++++++++"
+		return render(request,'activelist/edit.html',{'active':active,'pro_m':pro_m,'cli_m':cli_m})
+	else:
+		return
