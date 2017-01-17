@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'staff',
     'event',
     'activelist',
+    'statement',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

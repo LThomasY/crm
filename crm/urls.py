@@ -23,4 +23,5 @@ urlpatterns = [
     url(r'^welcome',welcome),
     url(r'^login/',include('activelist.urls',namespace='activelist')),
     url(r'^logout',logout,name='logout'),
+    url(r'^statement/',include('statement.urls',namespace='statement')),
 ]
