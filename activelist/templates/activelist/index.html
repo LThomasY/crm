@@ -423,13 +423,13 @@
             <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="15">
             <thead>
             <tr>
-                <th data-hide="phone">Type(销售/技术)</th>
-                <th data-hide="phone">Time(日期)</th>
-                <th data-hide="phone">Consuming(耗时)</th>
-                <th data-hide="phone">Clientele(客户)</th>
-                <th data-hide="phone">Project(项目)</th>
-                <th data-hide="phone">Details(描述)</th>
-                <th class="text-right">Action</th>
+                <th data-hide="phone" >销售/技术</th>
+                <th data-hide="phone" >日期</th>
+                <th data-hide="phone" >耗时</th>
+                <th data-hide="phone" >客户</th>
+                <th data-hide="phone" >项目</th>
+                <th data-hide="phone" class="text-center" style="width: 350px;">描述</th>
+                <th class="text-center">Action</th>
             </tr>
             </thead>
             <tbody>
@@ -440,12 +440,12 @@
                 <td>{{ a.expendtime }}</td>
                 <td>{{ a.client }}</td>
                 <td>{{ a.project }}</td>
-                <td>{{ a.detail }}</td>
-                <td>
-                  <div class="btn-group">
-                      <button class="btn btn-primary">Action</button>
+                <td class="text-center"><div style="width:340px; height:35px; overflow:hidden; ">{{ a.detail }}</div></td>
+                <td class="text-center">
+                  <div class="btn-group" >
+                      <button class="btn btn-primary" >Action</button>
                       <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle"><span class="caret"></span></button>
-                      <ul class="dropdown-menu">
+                      <ul class="dropdown-menu" >
                         <li><a href="{% url 'activelist:edit_active' a.id %}">Edit</a></li>
                         <li><a href="{% url 'activelist:delete_active' a.id %}">Delete</a></li>
                       </ul>
@@ -457,13 +457,13 @@
 
             <tfoot>
             <tr>
-              <th>Type(销售/技术)</th>
-              <th>Time(日期)</th>
-              <th>Time-consuming(耗时)</th>
-              <th>Client(客户)</th>
-              <th>Project(项目)</th>
-              <th>Details(描述)</th>
-              <th>Action</th>
+              <th data-hide="phone" style="width: 100px;">销售/技术</th>
+              <th data-hide="phone" style="width: 100px;">日期</th>
+              <th data-hide="phone" style="width: 80px;">耗时</th>
+              <th data-hide="phone" style="width: 100px;">客户</th>
+              <th data-hide="phone" style="width: 100px;">项目</th>
+              <th data-hide="phone" class="text-center" style="width: 280px;">描述</th>
+              <th class="text-center">Action</th>
             </tr>
             </tfoot>
             </table>

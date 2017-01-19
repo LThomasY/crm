@@ -11,7 +11,7 @@ class Activelist(models.Model):
     )
     utype = models.CharField(max_length=20,default='none',choices=ACT_TYPE)
     datetime = models.DateField()
-    expendtime = models.CharField(max_length=50,default='none')
+    expendtime = models.IntegerField(max_length=50,default='none')
     client = models.ForeignKey('Client')
     project = models.ForeignKey('Project')
     detail = models.TextField()
@@ -20,15 +20,15 @@ class Activelist(models.Model):
     def __unicode__(self):
         return str(self.username)
     class Meta:
-        ordering = ['datetime']
+        ordering = ['-datetime']
 
 
 class Project(models.Model):
-    projectl = models.CharField(max_length=50)
+    projectl = models.CharField(max_length=50,blank=True)
     def __unicode__(self):
         return self.projectl
 
 class Client(models.Model):
-    clientl = models.CharField(max_length=50)
+    clientl = models.CharField(max_length=50,blank=True)
     def __unicode__(self):
         return self.clientl

@@ -1,7 +1,7 @@
 from .models import Activelist,Project,Client
-from django.shortcuts import render
-from django.contrib.auth import authenticate
-from django.contrib.auth import login as auth_login
+from django.shortcuts import render,get_object_or_404
+from django.contrib.auth import authenticate,login as auth_login
+from django.contrib.auth.decorators import login_required
 from django import forms
 #encoding='utf-8'
 #from .forms import ActivelistForm
@@ -27,10 +27,12 @@ def login(request):
 			msg = 'The username or password is incorrect, please confirm'
 			return render(request,'activelist/login.html',{'msg':msg,'authenticate_failed':True})
 
+@login_required
 def logout(request):
 	auth_logout(request)
 	return render(request,'welcome.html')
 
+@login_required
 def index(request):
 	u = request.user
 	activel = Activelist.objects.filter(username_id=u.id)[:10]
@@ -39,6 +41,7 @@ def index(request):
 #	print Activelist.objects.filter(username_id=u.id).values('project'),"-----------"
 	return render(request,'activelist/index.html',{'activel':activel})
 
+@login_required
 def add_active(request):
 	if request.method == 'GET':
 #		add_f = ActivelistForm()
@@ -66,6 +69,8 @@ def add_active(request):
 #<p class="alert alert-danger">
 #{{ msg }}
 #</p>
+
+@login_required
 def edit_active(request,id):
 	if request.method == 'GET':
 #		print id,'$$$$$$$$$$$'
@@ -73,7 +78,7 @@ def edit_active(request,id):
 #		print active,"-----------"
 		pro_m = Project.objects.all()
 		cli_m = Client.objects.all()
-#		print active,"++++++++++"
+#		print active.client,"++++++++++"
 		return render(request,'activelist/edit.html',{'active':active,'pro_m':pro_m,'cli_m':cli_m,'id':id})
 	else:
 		username1 = request.user.id
@@ -85,6 +90,7 @@ def edit_active(request,id):
 #		print project1.encode('utf-8'),'***********'
 		detail1 = request.POST.get('detail','')
 		client_1 = Client.objects.get(clientl=client1)
+#		client_1 = get_object_or_404(Client, client=request.POST.get['client'])
 		project_1 = Project.objects.get(projectl=project1)
 #		print id,'+++++++++++++++++'
 		Activelist.objects.filter(id=id).update(utype=utype1,datetime=datetime1,expendtime=expendtime1,client=client_1,
@@ -93,6 +99,7 @@ def edit_active(request,id):
 		activel = Activelist.objects.filter(username_id=username1)
 		return render(request,'activelist/index.html',{'activel':activel})
 
+@login_required
 def delete_active(request,id):
 	username1 = request.user.id
 	Activelist.objects.filter(id = id).delete()

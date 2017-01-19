@@ -13,6 +13,7 @@
     <link href="../../../static/css/plugins/iCheck/custom.css" rel="stylesheet">
     <link href="../../../static/css/animate.css" rel="stylesheet">
     <link href="../../../static/css/style.css" rel="stylesheet">
+    <link href="../../../static/css/plugins/datapicker/datepicker3.css" rel="stylesheet">
 
     <link href="../../../static/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet">
 
@@ -381,7 +382,7 @@
                             <a href="{% url 'activelist:index' %}">Active List</a>
                         </li>
                         <li class="active">
-                            <strong>New Schedule</strong>
+                            <strong>Edit Schedule</strong>
                         </li>
                     </ol>
                 </div>
@@ -422,8 +423,8 @@
                               <div class="hr-line-dashed"></div>
 
                                 <div class="form-group"><label class="col-sm-2 control-label">Project</label>
-
-                                    <div class="col-sm-10"><select class="form-control m-b" name="project">
+                                    <input type="hidden" value="{{ active.project }}" id=o2 >
+                                    <div class="col-sm-10"><select class="form-control m-b" name="project" id=s2>
                                       {% for project in pro_m %}
                                         <option value="{{ project.projectl }}" >{{ project.projectl }}</option>
                                       {% endfor %}
@@ -433,27 +434,28 @@
                                 <div class="hr-line-dashed"></div>
 
                                 <div class="form-group"><label class="col-sm-2 control-label">Expend time</label>
-                                    <div class="col-sm-10"><input type="text" name="expendtime" class="form-control" value=""> <span class="help-block m-b-none">A total of how much time going out</span>
+                                    <div class="col-sm-10"><input type="text" name="expendtime" class="form-control" value="{{ active.expendtime }}" ><span class="help-block m-b-none">A total of how much time going out</span>
                                     </div>
                                 </div>
                                 <div class="hr-line-dashed"></div>
                                 <div class="form-group"><label class="col-sm-2 control-label">Detail</label>
-
-                                    <div class="col-sm-10"><textArea rows="4" cols="8" name="detail" placeholder="Please describe your activities" class="form-control" ></textArea></div>
+                                    <div class="col-sm-10"><textArea rows="4" cols="8" name="detail" class="form-control" >{{ active.detail }} </textArea></div>
                                 </div>
+
                                 <div class="hr-line-dashed"></div>
                                 <div class="form-group"><label class="col-sm-2 control-label">Type<br/>
                                     <small class="text-navy">♛♛♛</small></label>
+                                    <div><input type="hidden" value="{{ active.utype }}" id="i1"/></div>
                                     <div class="col-sm-10">
-                                        <div><label> <input type="radio" name="utype" checked="" value="Pre-Sales" id="optionsRadios1" name="optionsRadios"> &nbsp 技  术  </label></div>
-                                        <div><label> <input type="radio" name="utype" value="After-Sales" id="optionsRadios2" name="optionsRadios">  &nbsp 销  售 </label></div>
+                                        <div><label> <input type="radio" name="utype" checked="" value="技术" id="optionsRadios1" > &nbsp 技  术  </label></div>
+                                        <div><label> <input type="radio" name="utype" value="销售" id="optionsRadios2" >  &nbsp 销  售 </label></div>
                                     </div>
                                 </div>
                                 <div class="hr-line-dashed"></div>
 
                                 <div class="form-group"><label class="col-sm-2 control-label">Client</label>
-
-                                    <div class="col-sm-10"><select class="form-control m-b" name="client">
+                                   <input type="hidden" value="{{ active.client }}" id="o1">
+                                    <div class="col-sm-10"><select class="form-control m-b" id="s1" name="client">
                                       {% for client in cli_m %}
                                         <option value="{{ client.clientl }}" >{{ client.clientl }}</option>
                                       {% endfor %}
@@ -509,6 +511,14 @@
                     radioClass: 'iradio_square-green',
                 });
 
+                if($('#optionsRadios1').val()==$('#i1').val()){
+
+                  $('#optionsRadios1').attr("checked","checked");
+                }else{
+                  $('#optionsRadios2').attr("checked","checked");
+                }
+                $("#s1 option[value="+$("#o1").val()+"]").attr("selected","selected");
+                $("#s2 option[value="+$("#o2").val()+"]").attr("selected","selected");
             });
 
             $('#data_1 .input-group.date').datepicker({
@@ -517,7 +527,7 @@
                 forceParse: false,
                 calendarWeeks: true,
                 autoclose: true,
-                format: "yyyy-mm-dd"
+                format: "yyyy-mm-dd",
             });
             function back(){
               history.go(-1);
