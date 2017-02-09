@@ -35,7 +35,7 @@ def logout(request):
 @login_required
 def index(request):
 	u = request.user
-	activel = Activelist.objects.filter(username_id=u.id)[:10]
+	activel = Activelist.objects.filter(username_id=u.id)[:50]
 #	print Activelist.objects.get(username=u),'*************'
 #	print '----------',u,'--------------****************'
 #	print Activelist.objects.filter(username_id=u.id).values('project'),"-----------"

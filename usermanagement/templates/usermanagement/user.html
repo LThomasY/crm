@@ -266,10 +266,10 @@
                       <button class="btn btn-primary" >Action</button>
                       <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle"><span class="caret"></span></button>
                       <ul class="dropdown-menu" >
-                        <li><a href="{% url 'usermanagement:change_acount_type' user.username %}">Change acount type</a></li>
-                        <li><a href="{% url 'usermanagement:reset_password' user.username %}">Reset password</a></li>
+                        <li><a href="{% url 'usermanagement:change_acount_type' user.username %}">更改用户权限</a></li>
+                        <li><a href="{% url 'usermanagement:reset_password' user.username %}">初始化密码</a></li>
                         <li class="divider"></li>
-                        <li><a href="{% url 'usermanagement:delete_user' user.username %}">Delete</a></li>
+                        <li><a href="{% url 'usermanagement:delete_user' user.username %}">删除</a></li>
                       </ul>
                     </div>
                 </td>
@@ -298,7 +298,7 @@
             <div class="col-lg-6">
             <div class="ibox float-e-margins">
             <div class="ibox-title">
-                <h5>JIN MU Company</h5>
+                <h5>JIN MU Company (Project)</h5>
                 <div class="ibox-tools">
                     <a class="collapse-link">
                         <i class="fa fa-chevron-up"></i>
@@ -343,7 +343,7 @@
             <div class="col-lg-6">
               <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                  <h5>JIN MU Company</h5>
+                  <h5>JIN MU Company (Client)</h5>
                   <div class="ibox-tools">
                     <a class="collapse-link">
                       <i class="fa fa-chevron-up"></i>
