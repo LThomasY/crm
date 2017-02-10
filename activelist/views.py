@@ -1,15 +1,18 @@
 from .models import Activelist,Project,Client
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404,redirect
 from django.contrib.auth import authenticate,login as auth_login
+from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django import forms
+from usermanagement.forms import UserForm
 #encoding='utf-8'
 #from .forms import ActivelistForm
 # Create your views here.
 def login(request):
 	if request.method == 'GET':
 		if request.user.is_authenticated():
-			return render(request,'activelist/basel.html')
+#			return render(request,'activelist/index.html')
+			return redirect('activelist:index')
 		else:
 			return render(request,'activelist/login.html')
 	else:
@@ -19,18 +22,13 @@ def login(request):
 		if user is not None:
 			if user.is_active:
 				auth_login(request,user)
-				return render(request,'activelist/basel.html')
+				return redirect('activelist:index')
 			else:
 				msg = 'The acount is not actived,please use another acount'
 				return render(request,'activelist/login.html',{'msg':msg,'user_is_no_active':True})
 		else:
 			msg = 'The username or password is incorrect, please confirm'
 			return render(request,'activelist/login.html',{'msg':msg,'authenticate_failed':True})
-
-@login_required
-def logout(request):
-	auth_logout(request)
-	return render(request,'welcome.html')
 
 @login_required
 def index(request):
@@ -42,6 +40,20 @@ def index(request):
 	return render(request,'activelist/index.html',{'activel':activel})
 
 @login_required
+def change_password(request):
+	if request.method == 'GET':
+		form = UserForm()
+		return render(request,'activelist/change_password.html',{'form':form})
+	else:
+		activel = Activelist.objects.filter(username_id=request.user.id)[:50]
+		usernameid = request.user.id
+		user = User.objects.filter(id=usernameid).first()
+		password_m = request.POST.get('password', '')
+		user.set_password(password_m)
+		user.save()
+		return render(request,'activelist/index.html',{'user':user,'activel':activel})
+
+@login_required
 def add_active(request):
 	if request.method == 'GET':
 #		add_f = ActivelistForm()
@@ -51,7 +63,8 @@ def add_active(request):
 		return render(request,'activelist/add.html', {'pro_m': pro_m,'cli_m': cli_m})
 	else:
 #		add_f = Activelist(request.POST)
-		username1 = request.user.id
+		usernameid = request.user.id
+		user = User.objects.filter(id=usernameid).first()
 		utype1 = request.POST.get('utype','')
 		datetime1 = request.POST.get('datetime','')
 		expendtime1 = request.POST.get('expendtime','')
@@ -62,10 +75,10 @@ def add_active(request):
 		client_1 = Client.objects.get(clientl=client1)
 		project_1 = Project.objects.get(projectl=project1)
 		Activelist.objects.create(utype=utype1,datetime=datetime1,expendtime=expendtime1,client=client_1,
-		project=project_1,detail=detail1,username_id=username1)
+		project=project_1,detail=detail1,username_id=usernameid)
 
 		activel = Activelist.objects.filter(username_id=request.user.id)
-		return render(request,'activelist/index.html',{'activel':activel})
+		return render(request,'activelist/index.html',{'activel':activel,'user':user,'add_active':True})
 #<p class="alert alert-danger">
 #{{ msg }}
 #</p>

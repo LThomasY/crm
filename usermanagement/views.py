@@ -52,6 +52,7 @@ def delete_client(request,client):
 def add_user(request):
     if request.method == 'GET':
         form = UserForm()
+        return render(request,'usermanagement/add_user.html',{'form': form})
     else:
         form = UserForm(request.POST)
         project = Project.objects.order_by('-id').all()
@@ -72,7 +73,6 @@ def add_user(request):
             users = User.objects.order_by('-id').all()
             return render(request,'usermanagement/user.html',{'users':users,'project':project,'client':client,'username':username,'add_user':True})
             # return redirect('UserManagement:user')
-    return render(request,'usermanagement/add_user.html',{'form': form})
 
 def change_acount_type(request,username):
     user = User.objects.get(username=username)

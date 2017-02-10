@@ -21,7 +21,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$',welcome),
     url(r'^welcome',welcome),
-    url(r'^login/',include('activelist.urls',namespace='activelist')),
+    url(r'^activelist/',include('activelist.urls',namespace='activelist')),
     url(r'^logout',logout,name='logout'),
     url(r'^statement/',include('statement.urls',namespace='statement')),
     url(r'^usermanagement/',include('usermanagement.urls',namespace='usermanagement')),
