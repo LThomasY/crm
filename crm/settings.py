@@ -25,14 +25,12 @@ SECRET_KEY = 'i1(yy3-@lkp++y1%6nxdy^5!e9c9#g4*6!c1p)5#h)m0c3+cx='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'staff',
-    'event',
     'activelist',
     'statement',
     'usermanagement',

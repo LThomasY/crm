@@ -1,0 +1,4 @@
+#django
+*.pyc
+#datebase
+db.sqlite3

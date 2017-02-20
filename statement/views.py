@@ -42,6 +42,22 @@ def search(request):
         active = SearchForm()
         pro_m = Project.objects.all()
         cli_m = Client.objects.all()
+        # kwargs={}
+        # if client1 != 'none':
+        #     kwargs['client']= str(client1)
+        #     print "------------------"
+        #
+        # print type(kwargs['client']),'=================='
+        # searchlist = Activelist.objects.filter(**kwargs)
+        # return render(request,'statement/search.html',{'searchlist':searchlist,'active':active,'pro_m':pro_m,'cli_m':cli_m})
+    #    search = filter(lambda x: x,[client1,project1,utype1])
+    #    if user.is_superuser:
+    #        searchlist = Activelist.objects.filter(datetime__range=(starttime, endtime),search)
+    #    else:
+    #        searchlist = Activelist.objects.filter(username=user,datetime__range=(starttime, endtime),search)
+
+    #    return render(request,'statement/search.html',{'searchlist':searchlist,'active':active,'pro_m':pro_m,'cli_m':cli_m})
+
         if (utype1 == 'none') or (client1 == 'none') or (project1 == 'none'):
             if (utype1 == 'none') and (client1 == 'none') and (project1 != 'none'):
                 project_1 = Project.objects.get(projectl=project1)
@@ -99,7 +115,10 @@ def search(request):
         else:
             client_1 = Client.objects.get(clientl=client1)
             project_1 = Project.objects.get(projectl=project1)
-            searchlist = Activelist.objects.filter(datetime__range=(starttime, endtime),utype = utype1,
-            client = client_1,project = project_1)
+            if user.is_superuser:
+                searchlist = Activelist.objects.filter(datetime__range=(starttime, endtime),utype = utype1,
+                client = client_1,project = project_1)
+            else:
+                searchlist = Activelist.objects.filter(username=user,datetime__range=(starttime, endtime))
 #            print searchlist,"++++++++++++"
             return render(request,'statement/search.html',{'searchlist':searchlist,'active':active,'pro_m':pro_m,'cli_m':cli_m})
