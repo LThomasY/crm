@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate,login as auth_login
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django import forms
+import datetime
 from usermanagement.forms import UserForm
 #encoding='utf-8'
 #from .forms import ActivelistForm
@@ -60,7 +61,8 @@ def add_active(request):
 		pro_m = Project.objects.all()
 		cli_m = Client.objects.all()
 #		print cli_m,'------------'
-		return render(request,'activelist/add.html', {'pro_m': pro_m,'cli_m': cli_m})
+		tim=datetime.datetime.now().strftime('%Y-%m-%d')
+		return render(request,'activelist/add.html', {'pro_m': pro_m,'cli_m': cli_m,'tim':tim})
 	else:
 #		add_f = Activelist(request.POST)
 		usernameid = request.user.id
@@ -92,7 +94,8 @@ def edit_active(request,id):
 		pro_m = Project.objects.all()
 		cli_m = Client.objects.all()
 #		print active.client,"++++++++++"
-		return render(request,'activelist/edit.html',{'active':active,'pro_m':pro_m,'cli_m':cli_m,'id':id})
+		tim = active.datetime.strftime('%Y-%m-%d')
+		return render(request,'activelist/edit.html',{'active':active,'pro_m':pro_m,'cli_m':cli_m,'id':id,'tim':tim})
 	else:
 		username1 = request.user.id
 		utype1 = request.POST.get('utype','')

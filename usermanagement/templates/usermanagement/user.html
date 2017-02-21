@@ -36,7 +36,7 @@
                              </span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="../../../static/table_data_tables.html#">
                             <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">锦木</strong>
-                            </span> <span class="text-muted text-xs block">主菜单<b class="caret"></b></span> </span> </a>
+                            </span> <span class="text-muted text-xs block">设置<b class="caret"></b></span> </span> </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
                           <li><a href="{% url 'activelist:change_password' %}">更改密码</a></li>
                           <li class="divider"></li>
@@ -48,12 +48,12 @@
                     </div>
                 </li>
                 <li class="active">
-                    <a href="./index.html"><i class="fa fa-th-large"></i> <span class="nav-label">工单系统</span> <span class="fa arrow"></span></a>
+                    <a href="./index.html"><i class="fa fa-th-large"></i> <span class="nav-label">工时系统</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
-                        <li><a href="{% url 'activelist:index' %}">员工活动</a></li>
-                        <li><a href="{% url 'statement:index' %}">报表界面</a></li>
+                        <li><a href="{% url 'activelist:index' %}">工时填写</a></li>
+                        <li><a href="{% url 'statement:index' %}">工时查询</a></li>
                         {% if user.is_superuser %}
-                        <li class="active"><a href="{% url 'usermanagement:user' %}">用户管理</a></li>
+                        <li class="active"><a href="{% url 'usermanagement:user' %}">项目管理</a></li>
                         {% endif %}
 
                     </ul>
@@ -79,9 +79,6 @@
                 <li>
                     <span class="m-r-sm text-muted welcome-message">欢迎来到锦木员工管理.</span>
                 </li>
-
-
-
                 <li>
                     <a href="{% url 'logout' %}">
                         <i class="fa fa-sign-out"></i> 登出
@@ -93,7 +90,7 @@
         </div>
             <div class="row wrapper border-bottom white-bg page-heading">
                 <div class="col-lg-10">
-                    <h2>用户管理界面</h2>
+                    <h2></h2>
                     <ol class="breadcrumb">
                         <li>
                             <a href="{% url 'usermanagement:user' %}">主界面</a>
@@ -113,7 +110,7 @@
             <div class="col-lg-12">
             <div class="ibox float-e-margins">
             <div class="ibox-title">
-                <h5>锦木员工管理模块</h5>
+                <h5>员工管理</h5>
                 <div class="ibox-tools">
                     <a class="collapse-link">
                         <i class="fa fa-chevron-up"></i>
@@ -138,7 +135,7 @@
             {% endif %}
             <div class="ibox-content">
             <div class="">
-            <a href="{% url 'usermanagement:add_user' %}" class="btn btn-primary ">增加新员工</a>
+            <a href="{% url 'usermanagement:add_user' %}" class="btn btn-primary ">添加</a>
             </div>
             <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="15">
             <thead>
@@ -181,16 +178,7 @@
             {% endfor %}
             </tbody>
 
-            <tfoot>
-            <tr>
-              <th data-hide="phone" >员工名</th>
-              <th data-hide="phone" >邮箱</th>
-              <th data-hide="phone" >手机</th>
-              <th data-hide="phone" >职位</th>
-              <th data-hide="phone" >最近登陆</th>
-              <th class="text-center">操作</th>
-            </tr>
-            </tfoot>
+
             </table>
 
             </div>
@@ -202,7 +190,7 @@
             <div class="col-lg-6">
             <div class="ibox float-e-margins">
             <div class="ibox-title">
-                <h5>锦木项目管理模块</h5>
+                <h5>项目管理</h5>
                 <div class="ibox-tools">
                     <a class="collapse-link">
                         <i class="fa fa-chevron-up"></i>
@@ -233,12 +221,7 @@
                   {% endfor %}
                 </tbody>
 
-                <tfoot>
-                  <tr>
-                    <th>项目</th>
-                    <th class="text-center">操作</th>
-                  </tr>
-                </tfoot>
+
               </table>
 
             </div>
@@ -247,7 +230,7 @@
             <div class="col-lg-6">
               <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                  <h5>锦木客户管理模块</h5>
+                  <h5>客户管理</h5>
                   <div class="ibox-tools">
                     <a class="collapse-link">
                       <i class="fa fa-chevron-up"></i>
@@ -278,12 +261,6 @@
                       {% endfor %}
                     </tbody>
 
-                    <tfoot>
-                      <tr>
-                        <th>客户</th>
-                        <th class="text-center">操作</th>
-                      </tr>
-                    </tfoot>
                   </table>
 
                 </div>
@@ -296,7 +273,7 @@
                 10GB of <strong>250GB</strong> Free.
             </div>
             <div>
-                <strong>Copyright</strong> Example Company &copy; 2014-2015
+                <strong>JIN MU</strong>  Company &copy; 2014-2015
             </div>
         </div>
 

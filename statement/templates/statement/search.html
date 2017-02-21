@@ -53,7 +53,7 @@
                              </span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="../static/ecommerce_product_list.html#">
                             <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">锦木</strong>
-                            </span> <span class="text-muted text-xs block">主菜单<b class="caret"></b></span> </span> </a>
+                            </span> <span class="text-muted text-xs block">设置<b class="caret"></b></span> </span> </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
                           <li><a href="{% url 'activelist:change_password' %}">更改密码</a></li>
                           <li class="divider"></li>
@@ -65,12 +65,12 @@
                     </div>
                 </li>
                 <li class="active">
-                    <a href="../static/index.html"><i class="fa fa-th-large"></i> <span class="nav-label">工单系统</span> <span class="fa arrow"></span></a>
+                    <a href="../static/index.html"><i class="fa fa-th-large"></i> <span class="nav-label">工时系统</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
-                        <li><a href="{% url 'activelist:index' %}">员工活动</a></li>
-                        <li class="active"><a href="{% url 'statement:index' %}">报表界面</a></li>
+                        <li><a href="{% url 'activelist:index' %}">工时填写</a></li>
+                        <li class="active"><a href="{% url 'statement:index' %}">工时查询</a></li>
                         {% if user.is_superuser %}
-                        <li><a href="{% url 'usermanagement:user' %}">用户管理</a></li>
+                        <li><a href="{% url 'usermanagement:user' %}">项目管理</a></li>
                         {% endif %}
 
                     </ul>
@@ -96,9 +96,6 @@
                 <li>
                     <span class="m-r-sm text-muted welcome-message">欢迎来到锦木员工管理.</span>
                 </li>
-
-
-
                 <li>
                     <a href="{% url 'logout' %}">
                         <i class="fa fa-sign-out"></i> 登出
@@ -110,7 +107,7 @@
         </div>
             <div class="row wrapper border-bottom white-bg page-heading">
                 <div class="col-lg-10">
-                    <h2>报表搜索界面</h2>
+                    <h2></h2>
                     <ol class="breadcrumb">
                         <li>
                             <a href="{% url 'statement:index' %}">主界面</a>
@@ -135,15 +132,15 @@
               <div class="row">
                 <form method="post" action="{% url 'statement:search' %}" >
                 {% csrf_token %}
-                  <div class="col-sm-2"><label class="col-sm-2 control-label">类型<br/>
-                    <small class="text-navy">LY</small></label>
+                  <div class="col-sm-2"><label>职位<br/>
+                    </label>
                     <div class="col-sm-10">
                         <div><label> <input type="radio" name="utype" value="技术" id="optionsRadios1" > &nbsp 技  术  </label></div>
                         <div><label> <input type="radio" name="utype" value="销售" id="optionsRadios2" >  &nbsp 销  售 </label></div>
                         <div><label> <input type="radio" name="utype" checked="" value=none id="optionsRadios3" >  &nbsp ALL</label></div>
                     </div>
                   </div>
-                  <div class="col-sm-2"><label class="col-sm-2 control-label">项目</label>
+                  <div class="col-sm-2"><label >客户</label>
 
                       <div class="form-group"><select class="form-control m-b" name="client" >
                           <option value=none > ALL </option>
@@ -153,7 +150,7 @@
                         </select>
                       </div>
                   </div>
-                <div class="col-sm-2"><label class="col-sm-2 control-label">客户</label>
+                <div class="col-sm-2"><label>项目</label>
                   <input type="hidden" value="{{ searchlist.project }}" id=o2 >
                   <div class="form-group"><select class="form-control m-b" name="project" >
                       <option value=none > ALL </option>
@@ -165,7 +162,7 @@
                 </div>
 
                 <div class="form-group" id="data_5">
-                  <label class="font-noraml">时间间隔选择</label>
+                  <label>时间间隔</label>
                   <div class="input-daterange input-group" id="datepicker">
                     <input type="text" class="input-sm form-control" name="starttime" value="2017-01-1"/>
                     <span class="input-group-addon">to</span>
@@ -186,21 +183,7 @@
                   <div class="ibox float-e-margins">
                       <div class="ibox-title">
                           <h5>您搜索的结果为：</h5>
-                          <div class="ibox-tools">
-                              <a class="collapse-link">
-                                  <i class="fa fa-chevron-up"></i>
-                              </a>
-                              <a class="dropdown-toggle" data-toggle="dropdown" href="../../../static/table_data_tables.html#">
-                                  <i class="fa fa-wrench"></i>
-                              </a>
-                              <ul class="dropdown-menu dropdown-user">
-                                <li><a href="{% url 'statement:search' %}">精确搜索</a>
-                                </li>
-                              </ul>
-                              <a class="close-link">
-                                  <i class="fa fa-times"></i>
-                              </a>
-                          </div>
+                          
                       </div>
                       <div class="ibox-content">
 
@@ -230,17 +213,7 @@
                       </tr>
                       {% endfor %}
                       </tbody>
-                      <tfoot>
-                      <tr>
-                        <th>用户名</th>
-                        <th>销售/技术</th>
-                        <th>日期</th>
-                        <th>耗时</th>
-                        <th>客户</th>
-                        <th>项目</th>
-                        <th>描述</th>
-                      </tr>
-                      </tfoot>
+
                       </table>
                           </div>
 
