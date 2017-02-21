@@ -31,12 +31,12 @@
                             <img alt="image" class="img-circle" src="../../../static/img/profile_small.jpg" />
                              </span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="../../../static/table_data_tables.html#">
-                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">JIN MU</strong>
-                             </span> <span class="text-muted text-xs block">Main menu <b class="caret"></b></span> </span> </a>
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">锦木</strong>
+                            </span> <span class="text-muted text-xs block">主菜单<b class="caret"></b></span> </span> </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                          <li><a href="{% url 'activelist:change_password' %}">Change Password</a></li>
+                          <li><a href="{% url 'activelist:change_password' %}">更改密码</a></li>
                           <li class="divider"></li>
-                          <li><a href="{% url 'logout' %}">Logout</a></li>
+                          <li><a href="{% url 'logout' %}">登出</a></li>
                         </ul>
                     </div>
                     <div class="logo-element">
@@ -44,12 +44,12 @@
                     </div>
                 </li>
                 <li class="active">
-                    <a href="../../../static/index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span> <span class="fa arrow"></span></a>
+                    <a href="../../../static/index.html"><i class="fa fa-th-large"></i> <span class="nav-label">工单系统</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level ">
-                        <li><a href="{% url 'activelist:index' %}">Employ active</a></li>
-                        <li class="active"><a href="{% url 'statement:index' %}">Statement</a></li>
+                        <li><a href="{% url 'activelist:index' %}">员工活动</a></li>
+                        <li class="active"><a href="{% url 'statement:index' %}">报表界面</a></li>
                         {% if user.is_superuser %}
-                        <li><a href="{% url 'usermanagement:user' %}">UserManagement</a></li>
+                        <li><a href="{% url 'usermanagement:user' %}">用户管理</a></li>
                         {% endif %}
 
                     </ul>
@@ -64,23 +64,23 @@
         <div class="row border-bottom">
         <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
         <div class="navbar-header">
-            <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="../../../static/table_data_tables.html#"><i class="fa fa-bars"></i> </a>
+            <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
             <form role="search" class="navbar-form-custom" action="search_results.html">
                 <div class="form-group">
-                    <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search">
+                    <input type="text" placeholder="锦木" class="form-control" name="top-search" id="top-search">
                 </div>
             </form>
         </div>
             <ul class="nav navbar-top-links navbar-right">
                 <li>
-                    <span class="m-r-sm text-muted welcome-message">Welcome to JIN MU employ list.</span>
+                    <span class="m-r-sm text-muted welcome-message">欢迎来到锦木员工管理.</span>
                 </li>
 
 
 
                 <li>
                     <a href="{% url 'logout' %}">
-                        <i class="fa fa-sign-out"></i> Log out
+                        <i class="fa fa-sign-out"></i> 登出
                     </a>
                 </li>
             </ul>
@@ -89,13 +89,13 @@
         </div>
             <div class="row wrapper border-bottom white-bg page-heading">
                 <div class="col-lg-10">
-                    <h2>Statement/报表界面</h2>
+                    <h2>报表界面</h2>
                     <ol class="breadcrumb">
                         <li>
-                            <a href="{% url 'statement:index' %}">Home</a>
+                            <a href="{% url 'statement:index' %}">主界面</a>
                         </li>
                         <li class="active">
-                            <strong>Statement</strong>
+                            <strong>报表界面</strong>
                         </li>
                     </ol>
                 </div>

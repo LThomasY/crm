@@ -35,13 +35,13 @@
                             <img alt="image" class="img-circle" src="../../../static/img/profile_small.jpg" />
                              </span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="../../../static/table_data_tables.html#">
-                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">JIN MU</strong>
-                            </span> <span class="text-muted text-xs block">Main menu <b class="caret"></b></span> </span> </a>
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">锦木</strong>
+                            </span> <span class="text-muted text-xs block">主菜单 <b class="caret"></b></span> </span> </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                           <li><a href="{% url 'activelist:change_password' %}">Change Password</a></li>
+                           <li><a href="{% url 'activelist:change_password' %}">修改密码</a></li>
                             <li class="divider"></li>
 
-                            <li><a href="{% url 'logout' %}">Logout</a></li>
+                            <li><a href="{% url 'logout' %}">登出</a></li>
                         </ul>
                     </div>
                     <div class="logo-element">
@@ -49,12 +49,12 @@
                     </div>
                 </li>
                 <li class="active">
-                    <a href="./index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span> <span class="fa arrow"></span></a>
+                    <a href="./index.html"><i class="fa fa-th-large"></i> <span class="nav-label">工单系统</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
-                        <li class="active"><a href="{% url 'activelist:index' %}">Employ active</a></li>
-                        <li><a href="{% url 'statement:index' %}">Statement</a></li>
+                        <li class="active"><a href="{% url 'activelist:index' %}">员工活动</a></li>
+                        <li><a href="{% url 'statement:index' %}">报表界面</a></li>
                         {% if user.is_superuser %}
-                        <li><a href="{% url 'usermanagement:user' %}">UserManagement</a></li>
+                        <li><a href="{% url 'usermanagement:user' %}">用户管理</a></li>
                         {% endif %}
 
                     </ul>
@@ -69,22 +69,22 @@
         <div class="row border-bottom">
         <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
         <div class="navbar-header">
-            <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="../../../static/table_data_tables.html#"><i class="fa fa-bars"></i> </a>
+            <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
             <form role="search" class="navbar-form-custom" action="search_results.html">
                 <div class="form-group">
-                    <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search">
+                    <input type="text" placeholder="锦木" class="form-control" name="top-search" id="top-search">
                 </div>
             </form>
         </div>
             <ul class="nav navbar-top-links navbar-right">
                 <li>
-                    <span class="m-r-sm text-muted welcome-message">Welcome to JIN MU employ list.</span>
+                    <span class="m-r-sm text-muted welcome-message">欢迎来到锦木员工管理.</span>
                 </li>
 
 
                 <li>
                     <a href="{% url 'logout' %}">
-                        <i class="fa fa-sign-out"></i> Log out
+                        <i class="fa fa-sign-out"></i> 登出
                     </a>
                 </li>
             </ul>
@@ -93,25 +93,25 @@
         </div>
             <div class="row wrapper border-bottom white-bg page-heading">
                 <div class="col-lg-10">
-                    <h2>Date List／数据界面</h2>
+                    <h2>数据界面</h2>
                     <ol class="breadcrumb">
                         <li>
-                            <a href="{% url 'activelist:index' %}">Home</a>
+                            <a href="{% url 'activelist:index' %}">主界面</a>
                         </li>
                         <li class="active">
-                            <strong>Active List</strong>
+                            <strong>活动列表</strong>
                         </li>
                     </ol>
                 </div>
             </div>
         {% if add_active %}
         <div class="alert alert-success alert-block"> <a class="close" data-dismiss="alert" href="#">×</a>
-          <h4 class="alert-heading">Success!</h4>
+          <h4 class="alert-heading">成功!</h4>
           <h5>{{ user }}的记录添加成功！</h5>
         </div>
         {% elif change_password %}
         <div class="alert alert-success alert-block"> <a class="close" data-dismiss="alert" href="#">×</a>
-          <h4 class="alert-heading">Success!</h4>
+          <h4 class="alert-heading">成功!</h4>
           <h5>{{ user }}的密码修改成功！</h5>
         </div>
         {% endif %}
@@ -121,7 +121,7 @@
             <div class="col-lg-12">
             <div class="ibox float-e-margins">
             <div class="ibox-title">
-                <h5>JIN MU Company Employ Active List</h5>
+                <h5>锦木公司员工活动表</h5>
                 <div class="ibox-tools">
                     <a class="collapse-link">
                         <i class="fa fa-chevron-up"></i>
@@ -130,9 +130,9 @@
                         <i class="fa fa-wrench"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="../../../static/table_data_tables.html#">Config option 1</a>
+                        <li><a href="">配置选项1</a>
                         </li>
-                        <li><a href="../../../static/table_data_tables.html#">Config option 2</a>
+                        <li><a href="../../../static/table_data_tables.html#">配置选项2</a>
                         </li>
                     </ul>
                     <a class="close-link">
@@ -142,7 +142,7 @@
             </div>
             <div class="ibox-content">
             <div class="">
-            <a href="{% url 'activelist:add_active' %}" class="btn btn-primary ">Add a new active</a>
+            <a href="{% url 'activelist:add_active' %}" class="btn btn-primary ">增加新活动</a>
             </div>
             <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="15">
             <thead>
@@ -153,7 +153,7 @@
                 <th data-hide="phone" >客户</th>
                 <th data-hide="phone" >项目</th>
                 <th data-hide="phone" class="text-center" style="width: 350px;">描述</th>
-                <th class="text-center">Action</th>
+                <th class="text-center">操作</th>
             </tr>
             </thead>
             <tbody>
@@ -167,11 +167,11 @@
                 <td class="text-center"><div style="width:340px; height:35px; overflow:hidden; ">{{ a.detail }}</div></td>
                 <td class="text-center">
                   <div class="btn-group" >
-                      <button class="btn btn-primary" >Action</button>
+                      <button class="btn btn-primary" >操作</button>
                       <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle"><span class="caret"></span></button>
                       <ul class="dropdown-menu" >
-                        <li><a href="{% url 'activelist:edit_active' a.id %}">Edit</a></li>
-                        <li><a href="{% url 'activelist:delete_active' a.id %}">Delete</a></li>
+                        <li><a href="{% url 'activelist:edit_active' a.id %}">编辑</a></li>
+                        <li><a href="{% url 'activelist:delete_active' a.id %}">删除</a></li>
                       </ul>
                     </div>
                 </td>
@@ -187,7 +187,7 @@
               <th data-hide="phone" style="width: 100px;">客户</th>
               <th data-hide="phone" style="width: 100px;">项目</th>
               <th data-hide="phone" class="text-center" style="width: 280px;">描述</th>
-              <th class="text-center">Action</th>
+              <th class="text-center">操作</th>
             </tr>
             </tfoot>
             </table>
@@ -199,7 +199,7 @@
         </div>
         <div class="footer">
             <div class="pull-right">
-                10GB of <strong>250GB</strong> Free.
+                2016<strong>12月</strong>.
             </div>
             <div>
                 <strong>Copyright</strong> Example Company &copy; 2014-2015
